@@ -45,8 +45,15 @@ class DetalleFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         resenar.setOnClickListener {
             val pelicula = detalleViewModel.peliculaDetallada.value
-            ResenaFragment.nuevaInstancia(pelicula!!).show(requireActivity().supportFragmentManager, "DETALLE") }
+            ResenaFragment.nuevaInstancia(pelicula!!).show(requireActivity().supportFragmentManager, "DETALLE")
+        }
+
+        encolar.setOnClickListener {
+            val pelicula = detalleViewModel.peliculaDetallada.value
+            detalleViewModel.encolarPelicula(pelicula!!)
+        }
     }
 }
