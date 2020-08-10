@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.proyectofinal.R
 import com.example.proyectofinal.model.Pelicula
 import kotlinx.android.synthetic.main.fragment_resena.*
+import kotlinx.android.synthetic.main.fragment_resena.view.*
 
 class ResenaFragment : DialogFragment() {
 
@@ -45,5 +46,18 @@ class ResenaFragment : DialogFragment() {
             resena.setText(it.resena)
         })
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        resenar.setOnClickListener {
+            val pelicula = arguments!!.getSerializable("PELICULA") as Pelicula
+            pelicula.estrellas = view.estrellas.rating
+            pelicula.resena = view.resena.text.toString()
+            resenaViewModel.resenarPelicula(pelicula)
+        }
+
+        cancelar.setOnClickListener { dismiss() }
     }
 }

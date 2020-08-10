@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.proyectofinal.model.Pelicula
-import com.example.proyectofinal.model.repositories.PeliculaRepositorio
+import com.example.proyectofinal.model.repositorios.PeliculaRepositorio
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -23,7 +23,7 @@ class DetalleViewModel : ViewModel(), CoroutineScope {
 
     fun encolarPelicula(pelicula: Pelicula){
         launch {
-            peliculaRepositorio.encolarPelicula(pelicula)
+            peliculaRepositorio.guardarPelicula(pelicula)
         }
     }
 }

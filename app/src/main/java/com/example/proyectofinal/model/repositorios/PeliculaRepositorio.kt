@@ -1,5 +1,6 @@
-package com.example.proyectofinal.model.repositories
+package com.example.proyectofinal.model.repositorios
 
+import androidx.lifecycle.LiveData
 import com.example.proyectofinal.app.PeliculaApplication
 import com.example.proyectofinal.model.Pelicula
 import com.example.proyectofinal.model.PeliculaEntidadMapper
@@ -10,10 +11,10 @@ class PeliculaRepositorio {
 
     private val peliculaDao = PeliculaApplication.baseDatos.peliculaDao()
 
-    val peliculasEncoladasTodas = peliculaDao.peliculasEncoladasTodas()
+    val peliculasResenadasTodas: LiveData<List<Pelicula>> = peliculaDao.getResenadas()
 
-    suspend fun encolarPelicula(pelicula: Pelicula){
+    suspend fun guardarPelicula(pelicula: Pelicula){
         val peliculaEntidad = PeliculaEntidadMapper.mapearDePeliculaAEntidad(pelicula)
-        withContext(Dispatchers.IO){ peliculaDao.encolarPelicula(peliculaEntidad) }
+        withContext(Dispatchers.IO){ peliculaDao.guardarPelicula(peliculaEntidad) }
     }
 }
