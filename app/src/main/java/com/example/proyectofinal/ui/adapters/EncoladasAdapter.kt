@@ -10,10 +10,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinal.R
 import com.example.proyectofinal.app.PeliculaApplication
 import com.example.proyectofinal.model.Pelicula
+import com.example.proyectofinal.model.repositorios.PeliculaRepositorio
 import com.example.proyectofinal.ui.send.ResenaFragment
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 
-class EncoladasAdapter(val peliculasEncoladas: MutableList<Pelicula>) : RecyclerView.Adapter<EncoladasAdapter.EncoladaViewHolder>(){
+class EncoladasAdapter(val peliculasEncoladas: MutableList<Pelicula>, val peliculaRepositorio: PeliculaRepositorio = PeliculaRepositorio())
+    : RecyclerView.Adapter<EncoladasAdapter.EncoladaViewHolder>(), CoroutineScope{
+
+    private val job = Job()
+    override val coroutineContext = Dispatchers.Main + job
 
     inner class EncoladaViewHolder(vista: View) : RecyclerView.ViewHolder(vista){
         val fondo = vista.findViewById<ImageView>(R.id.fondoEncolada)
@@ -54,6 +63,11 @@ class EncoladasAdapter(val peliculasEncoladas: MutableList<Pelicula>) : Recycler
         val configuracion = PeliculaApplication.peliculaAPIConfiguration
         Picasso.get().load(configuracion?.images!!.secure_base_url + configuracion.images.backdrop_sizes.get(0) + pelicula.backdrop_path).into(holder.fondo)
         holder.titulo.text = pelicula.original_title
+        holder.borrar.setOnClickListener {
+            launch {
+                peliculaRepositorio.borrarPeliculaEncolada(pelicula)
+            }
+        }
     }
 
     fun actualizarEncoladas(listaNueva: List<Pelicula>){

@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinal.R
 import com.example.proyectofinal.ui.adapters.EncoladasAdapter
+import kotlinx.android.synthetic.main.fragment_encoladas.*
 
 class EncoladasFragment : Fragment() {
 
@@ -33,5 +34,11 @@ class EncoladasFragment : Fragment() {
             recyclerView.adapter = encoladasAdapter
         })
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        borrarTodasEncoladas.setOnClickListener { encoladasViewModel.borrarTodasEncoladas() }
     }
 }

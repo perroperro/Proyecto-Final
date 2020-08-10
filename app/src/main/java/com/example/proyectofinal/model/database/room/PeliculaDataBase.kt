@@ -5,8 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.proyectofinal.model.Pelicula
+import com.example.proyectofinal.model.database.room.entidades.PeliculaEntidad
 
-@Database(entities = [Pelicula::class], version = 1)
+@Database(entities = [PeliculaEntidad::class], version = 1)
 abstract class PeliculaDataBase : RoomDatabase() {
 
     abstract fun peliculaDao(): PeliculaDao
