@@ -32,12 +32,6 @@
         tools:layout="@layout/fragment_encoladas" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.example.proyectofinal.ui.tools.ToolsFragment"
-        android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
-
-    <fragment
         android:id="@+id/nav_resenadas"
         android:name="com.example.proyectofinal.ui.share.ResenadasFragment"
         android:label="@string/menu_resenadas"
