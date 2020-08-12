@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_portada"
-        android:name="com.example.proyectofinal.ui.home.RecomendacionesFragment"
+        android:name="com.example.proyectofinal.ui.portada.RecomendacionesFragment"
         android:label="@string/menu_portada"
         tools:layout="@layout/fragment_recomendaciones" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/nav_detalle"
-        android:name="com.example.proyectofinal.ui.gallery.DetalleFragment"
+        android:name="com.example.proyectofinal.ui.detalle.DetalleFragment"
         android:label="@string/menu_detalle"
         tools:layout="@layout/fragment_detalle" >
         <argument
@@ -27,13 +27,13 @@
 
     <fragment
         android:id="@+id/nav_encoladas"
-        android:name="com.example.proyectofinal.ui.slideshow.EncoladasFragment"
+        android:name="com.example.proyectofinal.ui.encoladas.EncoladasFragment"
         android:label="@string/menu_encoladas"
         tools:layout="@layout/fragment_encoladas" />
 
     <fragment
         android:id="@+id/nav_resenadas"
-        android:name="com.example.proyectofinal.ui.share.ResenadasFragment"
+        android:name="com.example.proyectofinal.ui.resenadas.ResenadasFragment"
         android:label="@string/menu_resenadas"
         tools:layout="@layout/fragment_resenadas" />
 </navigation>

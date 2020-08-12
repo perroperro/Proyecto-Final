@@ -1,4 +1,4 @@
-package com.example.proyectofinal.ui.send
+package com.example.proyectofinal.ui.detalle
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,18 +11,18 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class ResenaViewModel : ViewModel(), CoroutineScope {
+class DetalleViewModel : ViewModel(), CoroutineScope {
 
     private val job = Job()
     override val coroutineContext = Dispatchers.Main + job
 
     private val peliculaRepositorio = PeliculaRepositorio(PeliculaApplication.baseDatos.peliculaDao())
 
-    val _peliculaResena = MutableLiveData<Pelicula>()
+    val _peliculaDetallada = MutableLiveData<Pelicula>()
 
-    val peliculaResena: LiveData<Pelicula> = _peliculaResena
+    val peliculaDetallada: LiveData<Pelicula> = _peliculaDetallada
 
-    fun resenarPelicula(pelicula: Pelicula){
+    fun encolarPelicula(pelicula: Pelicula){
         launch {
             peliculaRepositorio.guardarPelicula(pelicula)
         }

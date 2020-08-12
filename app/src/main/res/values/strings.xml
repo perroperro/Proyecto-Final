@@ -12,4 +12,9 @@
     <string name="menu_encoladas">Quiero ver:</string>
     <string name="menu_resenadas">Ya las vi y son:</string>
     <string name="menu_send">Send</string>
+    <string name="boton_encolar">La quiero ver</string>
+    <string name="boton_resenar">Ya la vi y es...</string>
+    <string name="hint_resena">¿Cómo estuvo? Escríbelo aquí:</string>
+    <string name="boton_guardar">Guardar</string>
+    <string name="boton_cancelar">Cancelar</string>
 </resources>

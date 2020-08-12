@@ -12,7 +12,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/borrarTodasEncoladas"
+        android:id="@+id/borrarEncoladasTodas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

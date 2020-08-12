@@ -1,4 +1,4 @@
-package com.example.proyectofinal.ui.send
+package com.example.proyectofinal.ui.resenar
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -35,14 +35,14 @@ class ResenaFragment : DialogFragment() {
             ViewModelProvider(this).get(ResenaViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_resena, container, false)
 
-        if(resenaViewModel.peliculaResena.value == null){
-            val pelicula = arguments!!.getSerializable("PELICULA") as Pelicula
-            resenaViewModel._peliculaResena.postValue(pelicula)
+        if(resenaViewModel.peliculaAResenar.value == null){
+            val pelicula = requireArguments().getSerializable("PELICULA") as Pelicula
+            resenaViewModel._peliculaAResenar.postValue(pelicula)
         }
 
-        resenaViewModel.peliculaResena.observe(this, Observer {
+        resenaViewModel.peliculaAResenar.observe(this, Observer {
             tituloResenada.text = it.original_title
-            estrellas.rating = it.estrellas?:0f
+            estrellasResenada.rating = it.estrellas?:0f
             resena.setText(it.resena)
         })
         return root
@@ -52,8 +52,8 @@ class ResenaFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         resenar.setOnClickListener {
-            val pelicula = resenaViewModel.peliculaResena.value!!
-            pelicula.estrellas = view.estrellas.rating
+            val pelicula = resenaViewModel.peliculaAResenar.value!!
+            pelicula.estrellas = view.estrellasResenada.rating
             pelicula.resena = view.resena.text.toString()
             resenaViewModel.resenarPelicula(pelicula)
         }

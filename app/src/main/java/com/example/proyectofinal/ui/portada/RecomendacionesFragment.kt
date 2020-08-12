@@ -1,4 +1,4 @@
-package com.example.proyectofinal.ui.home
+package com.example.proyectofinal.ui.portada
 
 import android.content.Context
 import android.content.DialogInterface
@@ -6,20 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinal.R
-import com.example.proyectofinal.model.RespuestaPelicula
-import com.example.proyectofinal.model.rest.retrofit.ClienteRetrofit
 import com.example.proyectofinal.ui.adapters.RecomendacionesAdapter
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class RecomendacionesFragment : Fragment() {
 
@@ -42,12 +35,12 @@ class RecomendacionesFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_recomendaciones, container, false)
         val recyclerView: RecyclerView = root.findViewById(R.id.recyclerRecomendaciones)
 
-        recomendacionesViewModel.listaRecomendaciones.observe(this, Observer {
+        recomendacionesViewModel.listaRecomendaciones.observe(viewLifecycleOwner, Observer {
             recomendacionesAdapter.actualizarRecomendaciones(it)
             recyclerView.adapter = recomendacionesAdapter
         })
 
-        recomendacionesViewModel.noSeConecto.observe(this, Observer {
+        recomendacionesViewModel.noSeConecto.observe(viewLifecycleOwner, Observer {
             AlertDialog.Builder(contexto)
                 .setMessage("No se pudo establecer conexión. \n\n$it")
                 .setPositiveButton("Aceptar"){

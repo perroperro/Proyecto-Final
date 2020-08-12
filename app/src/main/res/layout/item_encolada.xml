@@ -11,7 +11,6 @@
         android:id="@+id/fondoEncolada"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
-        tools:srcCompat="@tools:sample/avatars"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,7 +22,6 @@
         android:id="@+id/tituloEncolada"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="No Veas Esta Película."
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/fondoEncolada"
@@ -42,5 +40,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:clickable="true"
-        app:srcCompat="@drawable/basurero"/>
+        app:srcCompat="@drawable/basurero"
+        android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>

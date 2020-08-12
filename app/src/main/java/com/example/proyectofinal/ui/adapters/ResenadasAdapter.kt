@@ -11,15 +11,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinal.R
 import com.example.proyectofinal.app.PeliculaApplication
 import com.example.proyectofinal.model.Pelicula
-import com.example.proyectofinal.ui.send.ResenaFragment
+import com.example.proyectofinal.ui.resenar.ResenaFragment
 import com.squareup.picasso.Picasso
 
 class ResenadasAdapter(val peliculasResenadas: MutableList<Pelicula>) : RecyclerView.Adapter<ResenadasAdapter.ResenadaViewHolder>(){
 
     inner class ResenadaViewHolder(vista: View) : RecyclerView.ViewHolder(vista){
-        val fondo = vista.findViewById<ImageView>(R.id.fondoResenada)
-        val titulo = vista.findViewById<TextView>(R.id.tituloResenada)
-        val estrellas = vista.findViewById<RatingBar>(R.id.estrellasResenada)
+        val fondoResenada = vista.findViewById<ImageView>(R.id.fondoResenada)
+        val tituloResenada = vista.findViewById<TextView>(R.id.tituloResenada)
+        val estrellasResenada = vista.findViewById<RatingBar>(R.id.estrellasResenada)
 
         init {
             vista.setOnClickListener {
@@ -52,13 +52,13 @@ class ResenadasAdapter(val peliculasResenadas: MutableList<Pelicula>) : Recycler
         val pelicula = peliculasResenadas[position]
         val configuracion = PeliculaApplication.peliculaAPIConfiguration
         if(configuracion == null){
-            Picasso.get().load(R.drawable.sin_conexion).into(holder.fondo)
+            Picasso.get().load(R.drawable.sin_conexion).into(holder.fondoResenada)
         }else{
             val direccionCompleta = "${configuracion.images.secure_base_url}/${configuracion.images.backdrop_sizes.get(0)}/${pelicula.backdrop_path}"
-            Picasso.get().load(direccionCompleta).into(holder.fondo)
+            Picasso.get().load(direccionCompleta).into(holder.fondoResenada)
         }
-        holder.titulo.text = pelicula.original_title
-        holder.estrellas.rating = pelicula.estrellas!!}
+        holder.tituloResenada.text = pelicula.original_title
+        holder.estrellasResenada.rating = pelicula.estrellas!!}
 
     fun actualizarResenadas(listaNueva: List<Pelicula>){
         peliculasResenadas.clear()

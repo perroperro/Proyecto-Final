@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.proyectofinal.model.Pelicula
 import com.example.proyectofinal.model.database.room.entidades.PeliculaEntidad
 
 @Database(entities = [PeliculaEntidad::class], version = 1)
@@ -15,22 +14,22 @@ abstract class PeliculaDataBase : RoomDatabase() {
     companion object {
 
         @Volatile
-        private var INSTANCE: PeliculaDataBase? = null
+        private var INSTANCIA: PeliculaDataBase? = null
 
         fun getPeliculaDatabase(context: Context): PeliculaDataBase {
 
-            val tempInstance = INSTANCE
-            if (tempInstance != null) {
-                return tempInstance
+            val instanciaTemporal = INSTANCIA
+            if (instanciaTemporal != null) {
+                return instanciaTemporal
             }
             synchronized(this) {
-                val instance = Room.databaseBuilder(
+                val instancia = Room.databaseBuilder(
                     context.applicationContext,
                     PeliculaDataBase::class.java,
                     "peliculas_database"
                 ).build()
-                INSTANCE = instance
-                return instance
+                INSTANCIA = instancia
+                return instancia
             }
         }
     }

@@ -1,7 +1,6 @@
-package com.example.proyectofinal.ui.share
+package com.example.proyectofinal.ui.resenadas
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.proyectofinal.app.PeliculaApplication
 import com.example.proyectofinal.model.Pelicula

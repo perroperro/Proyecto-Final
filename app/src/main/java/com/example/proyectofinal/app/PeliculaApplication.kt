@@ -6,10 +6,6 @@ import androidx.lifecycle.Observer
 import com.example.proyectofinal.model.PeliculaAPIConfiguration
 import com.example.proyectofinal.model.database.room.PeliculaDataBase
 import com.example.proyectofinal.model.repositorios.PeliculaRepositorio
-import com.example.proyectofinal.model.rest.retrofit.ClienteRetrofit
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class PeliculaApplication : Application() {
 

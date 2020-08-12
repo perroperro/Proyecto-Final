@@ -1,14 +1,12 @@
-package com.example.proyectofinal.ui.share
+package com.example.proyectofinal.ui.resenadas
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinal.R
 import com.example.proyectofinal.ui.adapters.ResenadasAdapter
@@ -28,7 +26,7 @@ class ResenadasFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_resenadas, container, false)
         val recyclerView: RecyclerView = root.findViewById(R.id.recyclerResenadas)
 
-        resenadasViewModel.listaResenadas.observe(this, Observer {
+        resenadasViewModel.listaResenadas.observe(viewLifecycleOwner, Observer {
             resenadasAdapter.actualizarResenadas(it)
             recyclerView.adapter = resenadasAdapter
         })

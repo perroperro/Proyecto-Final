@@ -11,7 +11,7 @@ import com.example.proyectofinal.R
 import com.example.proyectofinal.app.PeliculaApplication
 import com.example.proyectofinal.model.Pelicula
 import com.example.proyectofinal.model.repositorios.PeliculaRepositorio
-import com.example.proyectofinal.ui.send.ResenaFragment
+import com.example.proyectofinal.ui.resenar.ResenaFragment
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -28,13 +28,13 @@ class EncoladasAdapter(
     override val coroutineContext = Dispatchers.Main + job
 
     inner class EncoladaViewHolder(vista: View) : RecyclerView.ViewHolder(vista){
-        val fondo = vista.findViewById<ImageView>(R.id.fondoEncolada)
-        val titulo = vista.findViewById<TextView>(R.id.tituloEncolada)
-        val borrar = vista.findViewById<ImageView>(R.id.borrarEncolada)
+        val fondoEncolada = vista.findViewById<ImageView>(R.id.fondoEncolada)
+        val tituloEncolada = vista.findViewById<TextView>(R.id.tituloEncolada)
+        val borrarEncolada = vista.findViewById<ImageView>(R.id.borrarEncolada)
 
         init {
-            fondo.setOnClickListener { resenar(vista) }
-            titulo.setOnClickListener { resenar(vista) }
+            fondoEncolada.setOnClickListener { resenar(vista) }
+            tituloEncolada.setOnClickListener { resenar(vista) }
         }
 
         private fun resenar(vista: View){
@@ -65,13 +65,13 @@ class EncoladasAdapter(
         val pelicula = peliculasEncoladas[position]
         val configuracion = PeliculaApplication.peliculaAPIConfiguration
         if(configuracion == null){
-            Picasso.get().load(R.drawable.sin_conexion).into(holder.fondo)
+            Picasso.get().load(R.drawable.sin_conexion).into(holder.fondoEncolada)
         }else{
             val direccionCompleta = "${configuracion.images.secure_base_url}/${configuracion.images.backdrop_sizes.get(0)}/${pelicula.backdrop_path}"
-            Picasso.get().load(direccionCompleta).into(holder.fondo)
+            Picasso.get().load(direccionCompleta).into(holder.fondoEncolada)
         }
-        holder.titulo.text = pelicula.original_title
-        holder.borrar.setOnClickListener {
+        holder.tituloEncolada.text = pelicula.original_title
+        holder.borrarEncolada.setOnClickListener {
             launch {
                 peliculaRepositorio.borrarPeliculaEncolada(pelicula)
             }

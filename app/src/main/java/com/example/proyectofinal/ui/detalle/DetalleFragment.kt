@@ -1,4 +1,4 @@
-package com.example.proyectofinal.ui.gallery
+package com.example.proyectofinal.ui.detalle
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.example.proyectofinal.R
 import com.example.proyectofinal.app.PeliculaApplication
-import com.example.proyectofinal.ui.send.ResenaFragment
+import com.example.proyectofinal.ui.resenar.ResenaFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_detalle.*
 
@@ -32,7 +32,7 @@ class DetalleFragment : Fragment() {
 
         if(detalleViewModel.peliculaDetallada.value == null) detalleViewModel._peliculaDetallada.postValue(pelicula)
 
-        detalleViewModel.peliculaDetallada.observe(this, Observer {
+        detalleViewModel.peliculaDetallada.observe(viewLifecycleOwner, Observer {
             val configuracion = PeliculaApplication.peliculaAPIConfiguration
             if(configuracion == null){
                 Picasso.get().load(R.drawable.sin_conexion).into(posterDetalle)

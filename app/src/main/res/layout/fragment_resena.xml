@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <RatingBar
-        android:id="@+id/estrellas"
+        android:id="@+id/estrellasResenada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/tituloResenada"
@@ -32,10 +32,10 @@
         android:id="@+id/resena"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/estrellas"
+        app:layout_constraintTop_toBottomOf="@id/estrellasResenada"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:hint="¿Cómo estuvo? Escríbelo aquí:"
+        android:hint="@string/hint_resena"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"/>
 
@@ -47,7 +47,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resena"
         app:layout_constraintEnd_toStartOf="@id/cancelar"
-        android:text="Guardar"/>
+        android:text="@string/boton_guardar"/>
 
     <Button
         android:id="@+id/cancelar"
@@ -57,6 +57,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resena"
         app:layout_constraintStart_toEndOf="@id/resenar"
-        android:text="Cancelar"/>
+        android:text="@string/boton_cancelar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

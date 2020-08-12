@@ -35,7 +35,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/porno"
-        tools:text="Sí"
         android:textStyle="bold"
         android:textSize="24sp"
         android:textColor="#FFFFFF"
@@ -51,7 +50,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/resenar"
-        android:text="La quiero ver"
+        android:text="@string/boton_encolar"
         android:layout_marginBottom="12dp"/>
 
     <Button
@@ -61,7 +60,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/encolar"
-        android:text="Ya la vi y es..."
+        android:text="@string/boton_resenar"
         android:layout_marginBottom="12dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

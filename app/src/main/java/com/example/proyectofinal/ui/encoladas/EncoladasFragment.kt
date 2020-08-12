@@ -1,14 +1,12 @@
-package com.example.proyectofinal.ui.slideshow
+package com.example.proyectofinal.ui.encoladas
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinal.R
 import com.example.proyectofinal.ui.adapters.EncoladasAdapter
@@ -29,7 +27,7 @@ class EncoladasFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_encoladas, container, false)
         val recyclerView: RecyclerView = root.findViewById(R.id.recyclerEncoladas)
 
-        encoladasViewModel.listaEncoladas.observe(this, Observer {
+        encoladasViewModel.listaEncoladas.observe(viewLifecycleOwner, Observer {
             encoladasAdapter.actualizarEncoladas(it)
             recyclerView.adapter = encoladasAdapter
         })
@@ -39,6 +37,6 @@ class EncoladasFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        borrarTodasEncoladas.setOnClickListener { encoladasViewModel.borrarTodasEncoladas() }
+        borrarEncoladasTodas.setOnClickListener { encoladasViewModel.borrarEncoladasTodas() }
     }
 }

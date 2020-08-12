@@ -5,7 +5,7 @@ import com.example.proyectofinal.model.database.room.entidades.PeliculaEntidad
 class PeliculaEntidadMapper {
 
     companion object{
-        fun mapearDePeliculaAEntidad(pelicula: Pelicula): PeliculaEntidad{
+        fun mapearDePeliculaAPeliculaEntidad(pelicula: Pelicula): PeliculaEntidad{
             return PeliculaEntidad(
                 pelicula.popularity,
                 pelicula.poster_path,

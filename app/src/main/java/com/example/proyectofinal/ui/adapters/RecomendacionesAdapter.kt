@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectofinal.R
 import com.example.proyectofinal.app.PeliculaApplication
 import com.example.proyectofinal.model.Pelicula
-import com.example.proyectofinal.ui.home.RecomendacionesFragmentDirections
+import com.example.proyectofinal.ui.portada.RecomendacionesFragmentDirections
 import com.squareup.picasso.Picasso
 
 class RecomendacionesAdapter(val recomendaciones: MutableList<Pelicula>) : RecyclerView.Adapter<RecomendacionesAdapter.RecomendacionViewHolder>(){
