@@ -46,7 +46,12 @@ class RecomendacionesAdapter(val recomendaciones: MutableList<Pelicula>) : Recyc
     ) {
         val pelicula = recomendaciones[position]
         val configuracion = PeliculaApplication.peliculaAPIConfiguration
-        Picasso.get().load(configuracion?.images!!.secure_base_url + configuracion.images.backdrop_sizes.get(2) + pelicula.backdrop_path).into(holder.fondoRecomendacion)
+        if(configuracion == null){
+            Picasso.get().load(R.drawable.sin_conexion).into(holder.fondoRecomendacion)
+        }else{
+            val direccionCompleta = "${configuracion.images.secure_base_url}/${configuracion.images.poster_sizes.get(5)}/${pelicula.poster_path}"
+            Picasso.get().load(direccionCompleta).into(holder.fondoRecomendacion)
+        }
         holder.descripcionRecomendacion.text = pelicula.overview    }
 
     fun actualizarRecomendaciones(listaNueva: List<Pelicula>){

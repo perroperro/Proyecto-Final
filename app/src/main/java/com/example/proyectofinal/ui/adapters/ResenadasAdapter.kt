@@ -51,7 +51,12 @@ class ResenadasAdapter(val peliculasResenadas: MutableList<Pelicula>) : Recycler
     ) {
         val pelicula = peliculasResenadas[position]
         val configuracion = PeliculaApplication.peliculaAPIConfiguration
-        Picasso.get().load(configuracion?.images!!.secure_base_url + configuracion.images.backdrop_sizes.get(0) + pelicula.backdrop_path).into(holder.fondo)
+        if(configuracion == null){
+            Picasso.get().load(R.drawable.sin_conexion).into(holder.fondo)
+        }else{
+            val direccionCompleta = "${configuracion.images.secure_base_url}/${configuracion.images.poster_sizes.get(5)}/${pelicula.poster_path}"
+            Picasso.get().load(direccionCompleta).into(holder.fondo)
+        }
         holder.titulo.text = pelicula.original_title
         holder.estrellas.rating = pelicula.estrellas!!}
 

@@ -34,8 +34,12 @@ class DetalleFragment : Fragment() {
 
         detalleViewModel.peliculaDetallada.observe(this, Observer {
             val configuracion = PeliculaApplication.peliculaAPIConfiguration
-            val direccionCompleta = "${configuracion?.images!!.secure_base_url}/${configuracion.images.poster_sizes.get(5)}/${it.poster_path}"
-            Picasso.get().load(direccionCompleta).into(posterDetalle)
+            if(configuracion == null){
+                Picasso.get().load(R.drawable.sin_conexion).into(posterDetalle)
+            }else{
+                val direccionCompleta = "${configuracion.images.secure_base_url}/${configuracion.images.poster_sizes.get(5)}/${it.poster_path}"
+                Picasso.get().load(direccionCompleta).into(posterDetalle)
+            }
             respuestaPorno.text =
                 if(it.adult) "Sí"
                 else "No"
@@ -46,14 +50,14 @@ class DetalleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        resenar.setOnClickListener {
-            val pelicula = detalleViewModel.peliculaDetallada.value
-            ResenaFragment.nuevaInstancia(pelicula!!).show(requireActivity().supportFragmentManager, "DETALLE")
-        }
-
         encolar.setOnClickListener {
             val pelicula = detalleViewModel.peliculaDetallada.value
             detalleViewModel.encolarPelicula(pelicula!!)
+        }
+
+        resenar.setOnClickListener {
+            val pelicula = detalleViewModel.peliculaDetallada.value
+            ResenaFragment.nuevaInstancia(pelicula!!).show(requireActivity().supportFragmentManager, "DETALLE")
         }
     }
 }

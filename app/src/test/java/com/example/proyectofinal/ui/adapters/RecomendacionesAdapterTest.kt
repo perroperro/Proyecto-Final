@@ -1,14 +1,10 @@
-package com.example.proyectofinal.ui
+package com.example.proyectofinal.ui.adapters
 
 import com.example.proyectofinal.model.Pelicula
-import com.example.proyectofinal.model.rest.retrofit.ClienteRetrofit
-import com.example.proyectofinal.ui.adapters.RecomendacionesAdapter
 import org.junit.Assert
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
-import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)

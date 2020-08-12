@@ -52,7 +52,7 @@ class ResenaFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         resenar.setOnClickListener {
-            val pelicula = arguments!!.getSerializable("PELICULA") as Pelicula
+            val pelicula = resenaViewModel.peliculaResena.value!!
             pelicula.estrellas = view.estrellas.rating
             pelicula.resena = view.resena.text.toString()
             resenaViewModel.resenarPelicula(pelicula)

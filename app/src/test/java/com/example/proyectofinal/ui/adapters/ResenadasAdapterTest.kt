@@ -1,7 +1,6 @@
-package com.example.proyectofinal.ui.adapter
+package com.example.proyectofinal.ui.adapters
 
 import com.example.proyectofinal.model.Pelicula
-import com.example.proyectofinal.ui.adapters.ResenadasAdapter
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith

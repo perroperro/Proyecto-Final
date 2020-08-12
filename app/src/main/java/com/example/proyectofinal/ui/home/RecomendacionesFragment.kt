@@ -47,30 +47,18 @@ class RecomendacionesFragment : Fragment() {
             recyclerView.adapter = recomendacionesAdapter
         })
 
-//Por mientras:
-        ClienteRetrofit.instanciaRetrofit().getRecomendaciones().enqueue(object:
-            Callback<RespuestaPelicula> {
-            override fun onFailure(call: Call<RespuestaPelicula>, t: Throwable) {
-                AlertDialog.Builder(contexto)
-                    .setMessage("No se pudo establecer conexión.")
-                    .setPositiveButton("Aceptar"){
-                            dialog: DialogInterface, _: Int ->
-                        dialog.dismiss()
-                    }
-                    .create()
-                    .show()
-            }
-
-            override fun onResponse(
-                call: Call<RespuestaPelicula>,
-                response: Response<RespuestaPelicula>
-            ) {
-                val respuestaPeliculas = response.body()
-                if(respuestaPeliculas != null){
-                    recomendacionesViewModel.postListaRecomendaciones(respuestaPeliculas.results)
+        recomendacionesViewModel.noSeConecto.observe(this, Observer {
+            AlertDialog.Builder(contexto)
+                .setMessage("No se pudo establecer conexión. \n\n$it")
+                .setPositiveButton("Aceptar"){
+                        dialog: DialogInterface, _: Int ->
+                    dialog.dismiss()
                 }
-            }
+                .create()
+                .show()
         })
+
+        recomendacionesViewModel.getRecomendaciones()
 
         return root
     }

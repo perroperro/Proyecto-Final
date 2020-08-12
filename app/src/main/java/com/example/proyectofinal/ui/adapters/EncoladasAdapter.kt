@@ -18,7 +18,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
-class EncoladasAdapter(val peliculasEncoladas: MutableList<Pelicula>, val peliculaRepositorio: PeliculaRepositorio = PeliculaRepositorio())
+class EncoladasAdapter(
+    val peliculasEncoladas: MutableList<Pelicula>,
+    val peliculaRepositorio: PeliculaRepositorio =
+        PeliculaRepositorio(PeliculaApplication.baseDatos.peliculaDao()))
     : RecyclerView.Adapter<EncoladasAdapter.EncoladaViewHolder>(), CoroutineScope{
 
     private val job = Job()
@@ -61,7 +64,12 @@ class EncoladasAdapter(val peliculasEncoladas: MutableList<Pelicula>, val pelicu
     ) {
         val pelicula = peliculasEncoladas[position]
         val configuracion = PeliculaApplication.peliculaAPIConfiguration
-        Picasso.get().load(configuracion?.images!!.secure_base_url + configuracion.images.backdrop_sizes.get(0) + pelicula.backdrop_path).into(holder.fondo)
+        if(configuracion == null){
+            Picasso.get().load(R.drawable.sin_conexion).into(holder.fondo)
+        }else{
+            val direccionCompleta = "${configuracion.images.secure_base_url}/${configuracion.images.poster_sizes.get(5)}/${pelicula.poster_path}"
+            Picasso.get().load(direccionCompleta).into(holder.fondo)
+        }
         holder.titulo.text = pelicula.original_title
         holder.borrar.setOnClickListener {
             launch {
