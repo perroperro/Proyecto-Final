@@ -27,7 +27,7 @@
             android:id="@+id/ir_a_encoladas"
             app:destination="@id/nav_encoladas" />
         <action
-            android:id="@+id/ir_a_resenadas"
+            android:id="@+id/ir_a_resenadas_desde_detalle"
             app:destination="@id/nav_resenadas" />
     </fragment>
 
@@ -35,7 +35,11 @@
         android:id="@+id/nav_encoladas"
         android:name="com.example.proyectofinal.ui.encoladas.EncoladasFragment"
         android:label="@string/menu_encoladas"
-        tools:layout="@layout/fragment_encoladas" />
+        tools:layout="@layout/fragment_encoladas" >
+        <action
+            android:id="@+id/ir_a_resenadas_desde_encoladas"
+            app:destination="@id/nav_resenadas" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_resenadas"

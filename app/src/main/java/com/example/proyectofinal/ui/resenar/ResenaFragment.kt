@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.proyectofinal.R
 import com.example.proyectofinal.model.Pelicula
 import com.example.proyectofinal.ui.detalle.DetalleFragmentDirections
+import com.example.proyectofinal.ui.encoladas.EncoladasFragmentDirections
 import kotlinx.android.synthetic.main.fragment_resena.*
 import kotlinx.android.synthetic.main.fragment_resena.view.*
 
@@ -58,7 +59,12 @@ class ResenaFragment : DialogFragment() {
             pelicula.estrellas = view.estrellasResenada.rating
             pelicula.resena = view.resena.text.toString()
             resenaViewModel.resenarPelicula(pelicula)
-            findNavController().navigate(DetalleFragmentDirections.irAResenadas())
+            try{
+                findNavController().navigate(DetalleFragmentDirections.irAResenadasDesdeDetalle())
+            }catch(exception: Exception){}
+            try {
+                findNavController().navigate(EncoladasFragmentDirections.irAResenadasDesdeEncoladas())
+            }catch (exception: Exception){}
             dismiss()
         }
 
