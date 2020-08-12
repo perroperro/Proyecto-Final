@@ -11,7 +11,7 @@
         android:label="@string/menu_portada"
         tools:layout="@layout/fragment_recomendaciones" >
         <action
-            android:id="@+id/abrirDetalle"
+            android:id="@+id/abrir_detalle"
             app:destination="@id/nav_detalle" />
     </fragment>
 
@@ -23,6 +23,12 @@
         <argument
             android:name="pelicula"
             app:argType="com.example.proyectofinal.model.Pelicula" />
+        <action
+            android:id="@+id/ir_a_encoladas"
+            app:destination="@id/nav_encoladas" />
+        <action
+            android:id="@+id/ir_a_resenadas"
+            app:destination="@id/nav_resenadas" />
     </fragment>
 
     <fragment

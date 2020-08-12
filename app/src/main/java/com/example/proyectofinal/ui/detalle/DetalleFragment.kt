@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.proyectofinal.R
 import com.example.proyectofinal.app.PeliculaApplication
@@ -53,6 +54,7 @@ class DetalleFragment : Fragment() {
         encolar.setOnClickListener {
             val pelicula = detalleViewModel.peliculaDetallada.value
             detalleViewModel.encolarPelicula(pelicula!!)
+            findNavController().navigate(DetalleFragmentDirections.irAEncoladas())
         }
 
         resenar.setOnClickListener {

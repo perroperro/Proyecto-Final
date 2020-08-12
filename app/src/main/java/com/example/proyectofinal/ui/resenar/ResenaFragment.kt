@@ -7,8 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.proyectofinal.R
 import com.example.proyectofinal.model.Pelicula
+import com.example.proyectofinal.ui.detalle.DetalleFragmentDirections
 import kotlinx.android.synthetic.main.fragment_resena.*
 import kotlinx.android.synthetic.main.fragment_resena.view.*
 
@@ -56,6 +58,8 @@ class ResenaFragment : DialogFragment() {
             pelicula.estrellas = view.estrellasResenada.rating
             pelicula.resena = view.resena.text.toString()
             resenaViewModel.resenarPelicula(pelicula)
+            findNavController().navigate(DetalleFragmentDirections.irAResenadas())
+            dismiss()
         }
 
         cancelar.setOnClickListener { dismiss() }
